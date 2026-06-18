@@ -61,6 +61,14 @@ contract FundMe {
         if(msg.sender != i_owner) { revert NotOwner(); }
         _;
     }
- 
+
+    receive() external payable {
+        fund();
+    }
+    
+    fallback() external payable {
+        fund();
+    }
 }
 // constant and immutable are keywords that make it so that your variables cant be changed
+
